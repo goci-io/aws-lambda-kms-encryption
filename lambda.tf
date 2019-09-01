@@ -10,14 +10,14 @@ resource "aws_cloudwatch_log_group" "decrypt_log_group" {
 }
 
 data "archive_file" "encrypt" {
-  output_path = format("%s/%s.zip", path.module, "encrypt")
-  source_file = format("%s/%s.js", path.module, "encrypt")
+  output_path = format("%s/encrypt.zip", path.module)
+  source_file = format("%s/src/encrypt.js", path.module)
   type        = "zip"
 }
 
 data "archive_file" "decrypt" {
-  output_path = format("%s/%s.zip", path.module, "decrypt")
-  source_file = format("%s/%s.js", path.module, "decrypt")
+  output_path = format("%s/decrypt.zip", path.module)
+  source_file = format("%s/src/decrypt.js", path.module)
   type        = "zip"
 }
 
