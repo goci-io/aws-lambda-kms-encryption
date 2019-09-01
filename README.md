@@ -21,6 +21,8 @@ module "encryption" {
 
 For more examples look into the [terraform.tfvars](terraform.tfvars.example) example.
 
+Keep in mind that your encrypted values will be stored in your Terraform state file. Make sure to have an encrypted backend configured to store the state. For example you can use the s3 [tfstate-backend](https://github.com/goci-io/tfstate-backend-aws) module to provision an encrypted S3 Bucket as backend.
+
 ## Encrypt values
 To store encrypted values in your repository you need to encrypt the value manually by using the encryption lambda.
 
