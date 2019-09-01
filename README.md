@@ -6,7 +6,7 @@ This module provisions an en- and decryption Lambda using the Node.js AWS SDK wi
 Additionally a log group is created for each lambda with a retention of 5 days. Key rotation is enabled.
 A role which allows the Lambda to en- and decrypt valus and write to the log group is assigned as lambda execution role.
 
-Checkout the [encryption](encrypt.js) or [decryption](decrypt.js) source code.
+Checkout the [encryption](src/encrypt.js) or [decryption](src/decrypt.js) source code.
 
 ## Encrypt values
 To store encrypted values in your repository you need to encrypt the value manually by using the encryption lambda.
