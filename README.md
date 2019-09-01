@@ -11,7 +11,7 @@ Checkout the [encryption](src/encrypt.js) or [decryption](src/decrypt.js) source
 ## Usage
 
 ```hcl
-module "user" {
+module "encryption" {
   source     = "git::https://github.com/goci-io/aws-lambda-kms-encryption.git?ref=tags/<latest-version>"
   namespace  = "goci"
   stage      = "staging"
