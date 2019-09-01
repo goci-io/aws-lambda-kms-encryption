@@ -8,6 +8,17 @@ A role which allows the Lambda to en- and decrypt valus and write to the log gro
 
 Checkout the [encryption](src/encrypt.js) or [decryption](src/decrypt.js) source code.
 
+## Usage
+
+```hcl
+module "user" {
+  source     = "git::https://github.com/goci-io/aws-lambda-kms-encryption.git?ref=tags/<latest-version>"
+  namespace  = "goci"
+  stage      = "staging"
+  region     = "eu1"
+}
+```
+
 ## Encrypt values
 To store encrypted values in your repository you need to encrypt the value manually by using the encryption lambda.
 
