@@ -19,6 +19,8 @@ module "user" {
 }
 ```
 
+For more examples look into the [terraform.tfvars](terraform.tfvars.example) example.
+
 ## Encrypt values
 To store encrypted values in your repository you need to encrypt the value manually by using the encryption lambda.
 

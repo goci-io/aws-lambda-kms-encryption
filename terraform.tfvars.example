@@ -1,0 +1,8 @@
+# Deploys a Lambda named goci-staging-app-secrets-eu1-encrypt in the AWS Account 123123123123
+namespace            = "goci"
+stage                = "staging"
+region               = "eu1"
+name                 = "app-secrets"
+aws_region           = "eu-central-1"
+aws_account_id       = "123123123123"
+aws_assume_role_name = "OrganizationAccountAccessRole"
