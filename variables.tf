@@ -47,5 +47,18 @@ variable "aws_region" {
 variable "aws_account_id" {
   type        = string
   default     = ""
-  description = "The AWS Account the lambda and log group will be deployed into"
+  description = "The AWS Account the lambda and log group will be deployed into. Requires either aws_assume_role_arn or _name"
 }
+
+variable "aws_assume_role_arn" {
+  type        = string
+  default     = ""
+  description = "AWS Role ARN to assume to create the resources"
+}
+
+variable "aws_assume_role_name" {
+  type        = string
+  default     = ""
+  description = "Name of an AWS Role to assume to create the resources, requires aws_account_id to be set"
+}
+

@@ -13,7 +13,7 @@ module "decrypt_label" {
 
 resource "aws_kms_key" "default" {
   description             = "Key to en- and decrypt secrets"
-  tags                    = module.kms_label.tags
+  tags                    = module.label.tags
   enable_key_rotation     = true
   deletion_window_in_days = 14
 }

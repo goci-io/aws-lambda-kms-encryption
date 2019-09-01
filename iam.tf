@@ -1,10 +1,3 @@
-locals {
-  aws_region     = var.aws_region == "" ? data.aws_region.current.name : var.aws_region
-  aws_account_id = var.aws_account_id == "" ? data.aws_caller_identity.current.account_id : var.aws_account_id
-}
-
-data "aws_caller_identity" "current" {}
-data "aws_region" "current" {}
 
 data "aws_iam_policy_document" "trust" {
   statement {
@@ -28,7 +21,7 @@ data "aws_iam_policy_document" "policy" {
   statement {
     effect    = "Allow"
     resources = [aws_kms_key.default.arn]
-    actions   = [
+    actions = [
       "kms:Decrypt",
       "kms:Encrypt",
       "kms:GenerateRandom",
@@ -38,8 +31,8 @@ data "aws_iam_policy_document" "policy" {
   statement {
     effect = "Allow"
     resources = [
-      format("arn:aws:logs:%s:%s:log-group:%s:log-stream:*", local.aws_region, local.aws_account_id, aws_cloudwatch_log_group.encrypt_log_group.function_name)
-      format("arn:aws:logs:%s:%s:log-group:%s:log-stream:*", local.aws_region, local.aws_account_id, aws_cloudwatch_log_group.encrypt_log_group.function_name)
+      format("arn:aws:logs:%s:%s:log-group:%s:log-stream:*", local.aws_region, local.aws_account_id, aws_cloudwatch_log_group.encrypt_log_group.name),
+      format("arn:aws:logs:%s:%s:log-group:%s:log-stream:*", local.aws_region, local.aws_account_id, aws_cloudwatch_log_group.encrypt_log_group.name),
     ]
     actions = [
       "logs:CreateLogStream",

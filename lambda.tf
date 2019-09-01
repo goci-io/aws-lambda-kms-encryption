@@ -31,6 +31,7 @@ resource "aws_lambda_function" "encrypt" {
   depends_on       = [data.archive_file.encrypt]
   filename         = data.archive_file.encrypt.output_path
   source_code_hash = data.archive_file.encrypt.output_base64sha256
+  description      = "Lambda to encrypt values using KMS key"
 
   environment {
     variables = {
@@ -49,4 +50,5 @@ resource "aws_lambda_function" "decrypt" {
   depends_on       = [data.archive_file.decrypt]
   filename         = data.archive_file.decrypt.output_path
   source_code_hash = data.archive_file.decrypt.output_base64sha256
+  description      = "Lambda to decrypt values using KMS key"
 }
