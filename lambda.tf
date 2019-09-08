@@ -1,4 +1,16 @@
 
+module "encrypt_label" {
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.15.0"
+  context    = module.label.context
+  attributes = ["encrypt"]
+}
+
+module "decrypt_label" {
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.15.0"
+  context    = module.label.context
+  attributes = ["decrypt"]
+}
+
 resource "aws_cloudwatch_log_group" "encrypt_log_group" {
   name              = "/aws/lambda/${aws_lambda_function.encrypt.function_name}"
   retention_in_days = 5
