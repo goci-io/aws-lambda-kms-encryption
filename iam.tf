@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "policy" {
     effect = "Allow"
     resources = [
       format("arn:aws:logs:%s:%s:log-group:%s:log-stream:*", local.aws_region, local.aws_account_id, aws_cloudwatch_log_group.encrypt_log_group.name),
-      format("arn:aws:logs:%s:%s:log-group:%s:log-stream:*", local.aws_region, local.aws_account_id, aws_cloudwatch_log_group.encrypt_log_group.name),
+      format("arn:aws:logs:%s:%s:log-group:%s:log-stream:*", local.aws_region, local.aws_account_id, aws_cloudwatch_log_group.decrypt_log_group.name),
     ]
     actions = [
       "logs:CreateLogStream",
