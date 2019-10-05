@@ -1,6 +1,5 @@
 export NAMESPACE ?= goci
 export STAGE ?= staging
-export REGION ?= eu1
 
 encrypt:
 	$(MAKE) ACTION=encrypt generic
@@ -11,7 +10,7 @@ decrypt:
 generic:
 	read -p "Enter secret value: " secret
 	aws lambda invoke \
-    	--function-name $(NAMESPACE)-$(STAGE)-encryption-$(REGION)-$(ACTION) \
+    	--function-name $(NAMESPACE)-$(STAGE)-encryption-$(ACTION) \
     	--payload '{ "value": "'"${secret}"'" }' \
     	--invocation-type RequestResponse \
     	result.txt

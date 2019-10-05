@@ -27,7 +27,7 @@ Keep in mind that your encrypted values will be stored in your Terraform state f
 To store encrypted values in your repository you need to encrypt the value manually by using the encryption lambda.
 
 You can also use the provided [Makefile](Makefile) to en- or decrypt values using `make encrypt` and `make decrypt`. 
-You may also provide `STAGE` and `REGION` arguments to `make` to build the correct lambda function name.
+You may also provide `STAGE` argument to `make` to build the correct lambda function name.
 
 _-- or --_
 
@@ -51,8 +51,8 @@ Example payload:
 ## Usage in Terraform
 
 This module is mainly designed to be used in Terraform. You can either build the lambda function name by relying on the convention applied to the name or import it from remote state.
-The convention applied to the lambda function name follows this: `<namespace>-<stage>-<name>-<attributes>-<region>-[encrypt|decrypt]`. 
-The name defaults to `encryption`. An example could be `goci-staging-encryption-eu1-encrypt`.
+The convention applied to the lambda function name follows this: `<namespace>-<stage>-<name>-<attributes>-[encrypt|decrypt]`. 
+The name defaults to `encryption`. An example could be `goci-staging-encryption-encrypt`.
 When using the remote state to import the function name you can use something like:
 
 ```hcl-terraform
