@@ -2,7 +2,6 @@ terraform {
   required_version = ">= 0.12.1"
 
   required_providers {
-    aws     = "~> 2.25"
     archive = "~> 1.2"
     null    = "~> 2.1"
   }
@@ -19,6 +18,9 @@ locals {
 }
 
 provider "aws" {
+  version = "~> 2.25"
+  region  = var.aws_region
+
   dynamic "assume_role" {
     iterator = role
     for_each = local.assume_role_arn == "" ? [] : [local.assume_role_arn]
@@ -35,6 +37,11 @@ module "label" {
   stage      = var.stage
   name       = var.name
   delimiter  = var.delimiter
-  attributes = concat(var.attributes, [var.region])
+  attributes = var.attributes
   tags       = merge(var.tags, { Region = var.region, Purpose = "Cryptography" })
+}
+
+module "region_label" {
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.15.0"
+  attributes = [var.region]
 }

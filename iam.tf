@@ -12,8 +12,8 @@ data "aws_iam_policy_document" "trust" {
 }
 
 resource "aws_iam_role" "lambda" {
-  name               = module.label.id
-  tags               = module.label.tags
+  name               = module.region_label.id
+  tags               = module.region_label.tags
   assume_role_policy = data.aws_iam_policy_document.trust.json
 }
 
@@ -43,7 +43,7 @@ data "aws_iam_policy_document" "policy" {
 }
 
 resource "aws_iam_role_policy" "lambda_access" {
-  name   = module.label.id
+  name   = module.region_label.id
   role   = aws_iam_role.lambda.id
   policy = data.aws_iam_policy_document.policy.json
 }
