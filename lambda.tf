@@ -37,7 +37,7 @@ resource "aws_lambda_function" "encrypt" {
   function_name    = module.encrypt_label.id
   tags             = module.encrypt_label.tags
   handler          = "encrypt.handler"
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
   timeout          = 10
   role             = aws_iam_role.lambda.arn
   depends_on       = [data.archive_file.encrypt]
@@ -56,7 +56,7 @@ resource "aws_lambda_function" "decrypt" {
   function_name    = module.decrypt_label.id
   tags             = module.decrypt_label.tags
   handler          = "decrypt.handler"
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
   timeout          = 10
   role             = aws_iam_role.lambda.arn
   depends_on       = [data.archive_file.decrypt]
