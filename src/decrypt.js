@@ -20,7 +20,10 @@ exports.handler = (event, context, callback) => {
         return;
     }
 
-    const tasks = keys.map(item => KMS.decrypt({CiphertextBlob: Buffer.from(map[item], 'base64')}).promise()
+    const tasks = keys
+        .filter(item => map[item])
+        .map(item => KMS.decrypt({CiphertextBlob: Buffer.from(map[item], 'base64')})
+        .promise()
         .then(result => map[item] = result.Plaintext.toString('utf-8'))
         .catch(err => {
             console.error(`Error during decryption of secret ${item}`, err);
