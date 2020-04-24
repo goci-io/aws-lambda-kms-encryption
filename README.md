@@ -2,6 +2,8 @@
 
 **Maintained by [@goci-io/prp-terraform](https://github.com/orgs/goci-io/teams/prp-terraform)**
 
+![Terraform Validate](https://github.com/goci-io/aws-lambda-kms-encryption/workflows/Terraform%20Validate/badge.svg)
+
 This module provisions an en- and decryption Lambda using the Node.js AWS SDK with an AWS KMS key. 
 Additionally a log group is created for each lambda with a retention of 5 days. Key rotation is enabled.
 A role which allows the Lambda to en- and decrypt valus and write to the log group is assigned as lambda execution role.
